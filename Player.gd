@@ -17,5 +17,9 @@ func _process(delta):
 
 	if Input.is_action_pressed("Left"):
 		apply_torque(Vector3(0.0,0.0,100.0) * delta  )
+
+
+
+		#
 		
 		

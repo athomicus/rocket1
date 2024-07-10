@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://dnma2xmnq17em"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_gfi4u"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ewg2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fuf78"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcjrq"]
+albedo_color = Color(0.334023, 0.670338, 0.231729, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_puxui"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vstjr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk7p5"]
+albedo_color = Color(0.284057, 0.383832, 0.686472, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6oje"]
+albedo_color = Color(0.36869, 0.229219, 0.0994761, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bbqn"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_4hecv"]
+rayleigh_coefficient = 0.75
+mie_coefficient = 0.21
+turbidity = 57.14
+sun_disk_scale = 0.0
+ground_color = Color(0.37222, 0.110364, 0.176437, 1)
+energy_multiplier = 5.9
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_a18e0"]
+sky_material = SubResource("PhysicalSkyMaterial_4hecv")
+
+[sub_resource type="Environment" id="Environment_8r4px"]
+background_mode = 1
+background_color = Color(0.345887, 0.218129, 0.100982, 1)
+background_energy_multiplier = 1.29
+sky = SubResource("Sky_a18e0")
+sky_custom_fov = 95.5
+ambient_light_color = Color(0.940887, 0.77117, 0.724034, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.5
+tonemap_mode = 2
+
+[node name="main" type="Node3D"]
+
+[node name="Player" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.485, 1.535, 0)
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+script = ExtResource("1_gfi4u")
+
+[node name="playerGeo" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CylinderMesh_4ewg2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CylinderShape3D_fuf78")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.225343, 0.572976, 0.787984, -0.116015, -0.818812, 0.562216, 0.967347, 0.0352739, 0.250987, 0, 3.58309, 0)
+light_energy = 0.8
+shadow_enabled = true
+directional_shadow_split_1 = 0.153
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.415)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="StartLaunch" type="Node3D" parent="Level"]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -5.4, 0.1, 0)
+
+[node name="starter" type="MeshInstance3D" parent="Level/StartLaunch"]
+material_override = SubResource("StandardMaterial3D_lcjrq")
+mesh = SubResource("BoxMesh_puxui")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/StartLaunch/starter"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StartLaunch/starter/StaticBody3D"]
+shape = SubResource("BoxShape3D_vstjr")
+
+[node name="land" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 7.2, 0.2, -0.052)
+material_override = SubResource("StandardMaterial3D_sk7p5")
+mesh = SubResource("BoxMesh_puxui")
+
+[node name="Floor" type="Node3D" parent="Level"]
+transform = Transform3D(30, 0, 0, 0, 3, 0, 0, 0, 5, 0, -1.84502, 0)
+
+[node name="floorGeo" type="MeshInstance3D" parent="Level/Floor"]
+material_override = SubResource("StandardMaterial3D_w6oje")
+mesh = SubResource("BoxMesh_dkj2v")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Floor/floorGeo"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor/floorGeo/StaticBody3D"]
+shape = SubResource("BoxShape3D_0bbqn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19776, 0, 0)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8r4px")

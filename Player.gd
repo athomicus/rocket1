@@ -20,6 +20,7 @@ func _process(delta):
 
 
 
-		#
-		
+		#git config --global user.email athomicus@gmail.com
+		#git config credential.helper store
+		#git config --global credntial.helper store
 		

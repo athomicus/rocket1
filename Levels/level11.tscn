@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://chupjvmivor4l"]
+[gd_scene load_steps=21 format=3 uid="uid://d0bbl6qxq70cr"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_at35w"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="2_f3vts"]
-[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_veibo"]
-[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="3_y6m76"]
+[ext_resource type="Script" path="res://main.gd" id="1_ngy3f"]
+[ext_resource type="Script" path="res://LevelManager.gd" id="2_jkf3q"]
+[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_1qm6i"]
+[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="4_dxw4a"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -70,19 +70,19 @@ tonemap_exposure = 2.2
 tonemap_white = 6.0
 
 [node name="main" type="Node3D"]
-script = ExtResource("1_at35w")
+script = ExtResource("1_ngy3f")
 
 [node name="LevelManager" type="Node3D" parent="."]
-script = ExtResource("2_f3vts")
-file_path = "res://Levels/level11.tscn"
+script = ExtResource("2_jkf3q")
+file_path = "res://main.tscn"
 
 [node name="Level" type="Node3D" parent="LevelManager"]
 script = SubResource("GDScript_01bhd")
 file_path = "res://Levels/level02.tscn"
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="LevelManager/Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("3_veibo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97372, 0.5, 0)
+script = ExtResource("3_1qm6i")
 destination = Vector3(0, 5, 0)
 duration = 3.0
 
@@ -93,6 +93,22 @@ mesh = SubResource("BoxMesh_q6ke7")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D"]
+transform = Transform3D(1.5, -3.33067e-17, 8.52651e-14, 3.33067e-17, 1.5, 2.66241e-30, -8.52651e-14, -7.69137e-31, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_fkyix")
+
+[node name="AnimatableBody3D2" type="AnimatableBody3D" parent="LevelManager/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03, 5.63194, 0)
+script = ExtResource("3_1qm6i")
+destination = Vector3(0, -3.5, 0)
+duration = 3.0
+
+[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D2"]
+transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3creo")
+mesh = SubResource("BoxMesh_q6ke7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D2"]
 transform = Transform3D(1.5, -3.33067e-17, 8.52651e-14, 3.33067e-17, 1.5, 2.66241e-30, -8.52651e-14, -7.69137e-31, 1.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_fkyix")
 
@@ -128,7 +144,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles02" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, 5.35712, 6.31043, -0.427244)
+transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, 6.81507, 6.31043, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles02"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -142,7 +158,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles04" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -5.68271, 6.12058, -0.427244)
+transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -6.76001, 6.12058, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles04"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -456,5 +472,5 @@ directional_shadow_split_1 = 0.153
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
-[node name="KeyboardPressButtons" parent="." instance=ExtResource("3_y6m76")]
+[node name="KeyboardPressButtons" parent="." instance=ExtResource("4_dxw4a")]
 position = Vector2(11, 313)

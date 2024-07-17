@@ -4,6 +4,7 @@ extends RigidBody3D
 signal change_to_next_level
 @onready var explosion :AudioStreamPlayer = $Explosion
 @onready var success:AudioStreamPlayer = $Success
+@onready var boost:AudioStreamPlayer = $Boost
 var is_started_fail_or_win_sequence = false
 
 # Called when the node enters the scene tree for the first time.
@@ -16,15 +17,18 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("Throttle"):
 		apply_central_force(Vector3.UP * delta * thrust) 
+		boost.play()
 		#Vector3.UP - global
 		#basis.y - local
 	if Input.is_action_pressed("Right_Engine"):
 		#apply_torque(Vector3(0.0,0.0,-ship_rot) * delta )
 		apply_central_force(Vector3.RIGHT* delta * thrust) 
+		boost.play()
 
 
 	if Input.is_action_pressed("Left_Engine"):
 		apply_central_force(Vector3.LEFT * delta * thrust) 
+		boost.play()
 		#apply_torque(Vector3(0.0,0.0,ship_rot) * delta  )
 
 
@@ -43,6 +47,7 @@ func _on_body_entered(body:Node):
 	if body.is_in_group("Landing"):
 		if !is_started_fail_or_win_sequence:
 			success.play()
+			set_process(false) # stop steering
 			emit_signal("change_to_next_level")
 			is_started_fail_or_win_sequence = true
 		 

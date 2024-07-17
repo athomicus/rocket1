@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gse06tvtfb2p"]
+[gd_scene load_steps=7 format=3 uid="uid://gse06tvtfb2p"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_l7ovj"]
 [ext_resource type="AudioStream" uid="uid://bvau5413xrryf" path="res://sfx/explosion.ogg" id="2_odqks"]
 [ext_resource type="AudioStream" uid="uid://b47w5vigbby7d" path="res://sfx/success.ogg" id="3_0lj5r"]
+[ext_resource type="AudioStream" uid="uid://dr7o4fjiojmwo" path="res://sfx/boost_.ogg" id="4_lnbev"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4ewg2"]
 
@@ -30,5 +31,9 @@ volume_db = -2.213
 
 [node name="Success" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0lj5r")
+
+[node name="Boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lnbev")
+volume_db = -23.603
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -59,6 +59,12 @@ tonemap_white = 6.0
 [node name="main" type="Node3D"]
 script = ExtResource("1_si6od")
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="LevelManager" type="Node3D" parent="."]
 script = ExtResource("2_1wh2a")
 file_path = "res://Levels/level02.tscn"

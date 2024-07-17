@@ -2,10 +2,14 @@ extends RigidBody3D
 @export_range(750.0,3000.0) var thrust: float  = 1000
 @export_range(10,110) var ship_rot: float = 100
 signal change_to_next_level
+@onready var explosion :AudioStreamPlayer = $Explosion
+@onready var success:AudioStreamPlayer = $Success
+var is_started_fail_or_win_sequence = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,16 +41,22 @@ func _process(delta):
 func _on_body_entered(body:Node):
 	#print(body.name)
 	if body.is_in_group("Landing"):
-		emit_signal("change_to_next_level")
-		print("emit signal strt")
+		if !is_started_fail_or_win_sequence:
+			success.play()
+			emit_signal("change_to_next_level")
+			is_started_fail_or_win_sequence = true
+		 
 		#get_tree().change_scene_to_file(body.file_path)
-	#	print(str(body.file_path))
+
 		 
 	if body.is_in_group("Floor_obstacles"):
-		set_process(false)
-		var tween = create_tween()
-		tween.tween_interval(1.0)
-		tween.tween_callback(get_tree().reload_current_scene)
+		if !is_started_fail_or_win_sequence:
+			set_process(false) # stop steering
+			explosion.play()
+			var tween = create_tween()
+			tween.tween_interval(1.5)
+			tween.tween_callback(get_tree().reload_current_scene)
+			is_started_fail_or_win_sequence = true
 	 
 	#	get_tree().reload_current_scene()
 	

@@ -1,8 +1,32 @@
-[gd_scene load_steps=16 format=3 uid="uid://xhq6gdo7aeus"]
+[gd_scene load_steps=24 format=3 uid="uid://bidtt4vw8rsr"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_424ms"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="2_7uay0"]
-[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="3_rfq08"]
+[ext_resource type="Script" path="res://main.gd" id="1_xpkmn"]
+[ext_resource type="Script" path="res://LevelManager.gd" id="2_xnqoq"]
+[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_b25jt"]
+[ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_12gnr"]
+[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="5_g2dpn"]
+
+[sub_resource type="GDScript" id="GDScript_01bhd"]
+script/source = "extends Node3D
+@export_file(\"*.tscn\") var file_path = \"Level02.tscn\"
+
+func _on_player_respawn():
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxube"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.315054, 0.0357284, 0.338273, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e6l1r"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rk5i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q6ke7"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkyix"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
 albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
@@ -52,16 +76,50 @@ tonemap_exposure = 2.2
 tonemap_white = 6.0
 
 [node name="main" type="Node3D"]
-script = ExtResource("1_424ms")
+script = ExtResource("1_xpkmn")
 
 [node name="LevelManager" type="Node3D" parent="."]
-script = ExtResource("2_7uay0")
-file_path = "res://Levels/level07.tscn"
+script = ExtResource("2_xnqoq")
+file_path = "res://Levels/level16.tscn"
 
 [node name="Level" type="Node3D" parent="LevelManager"]
+script = SubResource("GDScript_01bhd")
+file_path = "res://Levels/level02.tscn"
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="LevelManager/Level"]
+transform = Transform3D(0.999312, 0.0370972, 0, -0.0370972, 0.999312, 0, 0, 0, 1, 2.20125, 0.5, 0)
+script = ExtResource("3_b25jt")
+destination = Vector3(0, 5, 0)
+duration = 3.0
+
+[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D"]
+transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_nxube")
+mesh = SubResource("BoxMesh_e6l1r")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D"]
+transform = Transform3D(1.5, -3.33067e-17, 8.52651e-14, 3.33067e-17, 1.5, 2.66241e-30, -8.52651e-14, -7.69137e-31, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_0rk5i")
+
+[node name="AnimatableBody3D_red" type="AnimatableBody3D" parent="LevelManager/Level" groups=["Floor_obstacles"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79673, 5.35912, 0)
+script = ExtResource("3_b25jt")
+destination = Vector3(0, -4.7, 0)
+duration = 3.0
+
+[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D_red"]
+transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
+material_override = ExtResource("4_12gnr")
+mesh = SubResource("BoxMesh_q6ke7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D_red"]
+transform = Transform3D(1.5, -3.33067e-17, 8.52651e-14, 3.33067e-17, 1.5, 2.66241e-30, -8.52651e-14, -7.69137e-31, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_fkyix")
 
 [node name="obstacles01" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -0.71017, 6.94998, -0.427244)
+transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -0.71017, 7.29462, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles01"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -75,7 +133,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles03" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-4.37058e-08, -0.045238, 0.999936, -4.94353e-10, 3.99974, 0.0113095, -1, -1.23679e-13, -4.37086e-08, -0.71017, 8.97949, -0.427244)
+transform = Transform3D(-4.37058e-08, -0.045238, 0.999936, -4.94353e-10, 3.99974, 0.0113095, -1, -1.23679e-13, -4.37086e-08, -0.71017, 9.35638, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles03"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -89,7 +147,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles02" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, 5.35712, 5.53053, -0.427244)
+transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, 6.81507, 6.31043, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles02"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -103,7 +161,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles04" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -5.68271, 5.48297, -0.427244)
+transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -6.76001, 6.12058, -0.427244)
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles04"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
@@ -387,5 +445,5 @@ directional_shadow_split_1 = 0.153
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
-[node name="KeyboardPressButtons" parent="." instance=ExtResource("3_rfq08")]
+[node name="KeyboardPressButtons" parent="." instance=ExtResource("5_g2dpn")]
 position = Vector2(11, 313)

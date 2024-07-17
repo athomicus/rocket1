@@ -1,16 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjryxbultkgi7"]
+[gd_scene load_steps=16 format=3 uid="uid://cjryxbultkgi7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xjbbx"]
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_lugt5"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="3_v74fv"]
-
-[sub_resource type="GDScript" id="GDScript_01bhd"]
-script/source = "extends Node3D
-@export_file(\"*.tscn\") var file_path = \"Level02.tscn\"
-
-func _on_player_respawn():
-	pass
-"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
 albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
@@ -67,8 +59,6 @@ script = ExtResource("2_lugt5")
 file_path = "res://Levels/level08.tscn"
 
 [node name="Level" type="Node3D" parent="LevelManager"]
-script = SubResource("GDScript_01bhd")
-file_path = "res://Levels/level02.tscn"
 
 [node name="obstacles01" type="Node3D" parent="LevelManager/Level"]
 transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -0.71017, 6.81744, -0.427244)

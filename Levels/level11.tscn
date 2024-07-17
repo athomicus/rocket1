@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_jkf3q"]
 [ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_1qm6i"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="4_dxw4a"]
+[ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_un1dt"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -21,9 +22,6 @@ albedo_color = Color(0.315054, 0.0357284, 0.338273, 1)
 size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkyix"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
-albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dkj2v"]
 
@@ -74,7 +72,7 @@ script = ExtResource("1_ngy3f")
 
 [node name="LevelManager" type="Node3D" parent="."]
 script = ExtResource("2_jkf3q")
-file_path = "res://main.tscn"
+file_path = "res://Levels/level12.tscn"
 
 [node name="Level" type="Node3D" parent="LevelManager"]
 script = SubResource("GDScript_01bhd")
@@ -120,7 +118,7 @@ transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.99993
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles01"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
+material_override = ExtResource("4_un1dt")
 mesh = SubResource("BoxMesh_dkj2v")
 skeleton = NodePath("../..")
 
@@ -134,7 +132,7 @@ transform = Transform3D(-4.37058e-08, -0.045238, 0.999936, -4.94353e-10, 3.99974
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles03"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
+material_override = ExtResource("4_un1dt")
 mesh = SubResource("BoxMesh_dkj2v")
 skeleton = NodePath("../..")
 
@@ -148,7 +146,7 @@ transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.99993
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles02"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
+material_override = ExtResource("4_un1dt")
 mesh = SubResource("BoxMesh_dkj2v")
 skeleton = NodePath("../..")
 
@@ -162,43 +160,13 @@ transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.99993
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles04"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
+material_override = ExtResource("4_un1dt")
 mesh = SubResource("BoxMesh_dkj2v")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles04/floorGeo" groups=["Floor_obstacles"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles04/floorGeo/StaticBody3D"]
-shape = SubResource("BoxShape3D_0bbqn")
-
-[node name="obstacles05" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -5.68271, 5.23379, -0.427244)
-visible = false
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles05"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
-mesh = SubResource("BoxMesh_dkj2v")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles05/floorGeo" groups=["Floor_obstacles"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles05/floorGeo/StaticBody3D"]
-shape = SubResource("BoxShape3D_0bbqn")
-
-[node name="obstacles06" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, 5.41229, 5.23379, -0.427244)
-visible = false
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles06"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
-mesh = SubResource("BoxMesh_dkj2v")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles06/floorGeo" groups=["Floor_obstacles"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles06/floorGeo/StaticBody3D"]
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="EndLanding" type="Node3D" parent="LevelManager/Level"]

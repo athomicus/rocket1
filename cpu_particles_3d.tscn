@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxqyqlvphbc0s"]
+
+[ext_resource type="Texture2D" uid="uid://lx5mxllhn6b2" path="res://particle/PNG (Transparent)/slash_01.png" id="1_8p53y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lxcu"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.899831, 0.885894, 0.86986, 1)
+albedo_texture = ExtResource("1_8p53y")
+albedo_texture_msdf = true
+heightmap_scale = -4.346
+texture_repeat = false
+disable_receive_shadows = true
+billboard_mode = 2
+billboard_keep_scale = true
+msdf_pixel_range = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ogieh"]
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="Curve" id="Curve_ncwsw"]
+min_value = 0.1
+max_value = 1.1
+_data = [Vector2(0.0186722, 1), 0.0, -1.6, 0, 0, Vector2(1, 0.385892), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nfymp"]
+offsets = PackedFloat32Array(0, 0.535088, 0.938596)
+colors = PackedColorArray(0.803922, 0, 0, 1, 1, 1, 0.407843, 1, 0.176471, 0.172549, 0, 0.372549)
+
+[node name="CPUParticles3D" type="CPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.35233, 0)
+material_override = SubResource("StandardMaterial3D_4lxcu")
+cast_shadow = 0
+gi_mode = 0
+amount = 6
+lifetime = 0.66
+preprocess = 0.03
+speed_scale = 0.6
+randomness = 0.05
+lifetime_randomness = 0.3
+local_coords = true
+mesh = SubResource("QuadMesh_ogieh")
+direction = Vector3(0, -1, 0)
+spread = 0.3
+flatness = 0.47
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 2.0
+scale_amount_min = 0.7
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_ncwsw")
+color_ramp = SubResource("Gradient_nfymp")

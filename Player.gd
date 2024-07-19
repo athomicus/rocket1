@@ -5,6 +5,7 @@ signal change_to_next_level
 @onready var explosion :AudioStreamPlayer = $Explosion
 @onready var success:AudioStreamPlayer = $Success
 @onready var boost:AudioStreamPlayer = $Boost
+@onready var particle_for_boost: CPUParticles3D = $CPUParticles3D
 var is_started_fail_or_win_sequence = false
 
 # Called when the node enters the scene tree for the first time.
@@ -15,20 +16,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
+	particle_for_boost.emitting = false
+
 	if Input.is_action_pressed("Throttle"):
 		apply_central_force(Vector3.UP * delta * thrust) 
-		boost.play()
+		play_boost_sound()
 		#Vector3.UP - global
 		#basis.y - local
 	if Input.is_action_pressed("Right_Engine"):
 		#apply_torque(Vector3(0.0,0.0,-ship_rot) * delta )
 		apply_central_force(Vector3.RIGHT* delta * thrust) 
-		boost.play()
-
+		play_boost_sound()
 
 	if Input.is_action_pressed("Left_Engine"):
 		apply_central_force(Vector3.LEFT * delta * thrust) 
-		boost.play()
+		play_boost_sound()
+		
 		#apply_torque(Vector3(0.0,0.0,ship_rot) * delta  )
 
 
@@ -74,3 +78,10 @@ func _on_body_entered(body:Node):
 
 func test_ref():
 	print("reference to Player")
+
+func play_boost_sound():	
+	particle_for_boost.emitting = true
+	#particle_for_boost.visible = true
+	if !boost.playing:
+		boost.play()
+	

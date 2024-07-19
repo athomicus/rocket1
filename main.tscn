@@ -59,6 +59,9 @@ tonemap_white = 6.0
 [node name="main" type="Node3D"]
 script = ExtResource("1_si6od")
 
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -329,9 +332,6 @@ shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LevelManager/Level"]
 environment = SubResource("Environment_8r4px")
-
-[node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(0.313735, 0.177957, -0.932685, 0.933928, 0.119392, 0.336934, 0.171315, -0.976769, -0.128741, 1.14218, 5.95199, 4.755)

@@ -18,6 +18,8 @@ axis_lock_angular_y = true
 max_contacts_reported = 8
 contact_monitor = true
 script = ExtResource("1_l7ovj")
+thrust = null
+ship_rot = null
 
 [node name="playerGeo" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_4ewg2")

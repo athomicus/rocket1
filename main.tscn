@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnma2xmnq17em"]
+[gd_scene load_steps=19 format=3 uid="uid://dnma2xmnq17em"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_si6od"]
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_1wh2a"]
+[ext_resource type="Script" path="res://UI.gd" id="2_cqt3p"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="2_docku"]
+[ext_resource type="Script" path="res://SoundOnOff.gd" id="3_3ti7f"]
+[ext_resource type="PackedScene" uid="uid://djlimviagvdqs" path="res://fuel.tscn" id="5_d6man"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -64,9 +67,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_cqt3p")
+
+[node name="SoundOnOff" type="TouchScreenButton" parent="UI"]
+passby_press = true
+script = ExtResource("3_3ti7f")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.439216)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="LabelScore" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = -29.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "00000"
+horizontal_alignment = 2
 
 [node name="LevelManager" type="Node3D" parent="."]
 script = ExtResource("2_1wh2a")
@@ -359,3 +396,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
 [node name="KeyboardPressButtons" parent="." instance=ExtResource("2_docku")]
 position = Vector2(11, 313)
+
+[node name="Fuel" parent="." instance=ExtResource("5_d6man")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 3.04661, 0)

@@ -1,0 +1,22 @@
+# MTL written from /home/athomicus/moveYourRacket/3D/kanister.obj
+newmtl black
+Kd 0.00518152 0.00518152 0.00518152
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl meshKanister
+Kd 0.533276 0 0
+Ns 1024
+d 1
+illum 1
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl yellow
+Kd 0.527115 0.450786 0.0137021
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04

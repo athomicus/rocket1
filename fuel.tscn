@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://djlimviagvdqs"]
+
+[ext_resource type="ArrayMesh" uid="uid://6654m02osevs" path="res://3D/kanister.obj" id="1_vpm1u"]
+[ext_resource type="Script" path="res://fuel.gd" id="2_4b2c3"]
+[ext_resource type="AudioStream" uid="uid://dkq0wivymlytg" path="res://sfx/tank.ogg" id="3_smabp"]
+
+[sub_resource type="Animation" id="Animation_3ax8c"]
+resource_name = "Kanister_animation"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0), Vector3(0, 0, 0), Vector3(0, 0.785398, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5xl12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyxma"]
+_data = {
+"Kanister_animation": SubResource("Animation_3ax8c"),
+"RESET": SubResource("Animation_5xl12")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3h4c"]
+size = Vector3(6.10107, 8.0835, 1.98047)
+
+[node name="Fuel" type="MeshInstance3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = ExtResource("1_vpm1u")
+script = ExtResource("2_4b2c3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vyxma")
+}
+autoplay = "Kanister_animation"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216807, -0.108486, 0)
+shape = SubResource("BoxShape3D_x3h4c")
+
+[node name="tank_fuel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_smabp")

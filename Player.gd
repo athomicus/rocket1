@@ -10,9 +10,16 @@ var is_started_fail_or_win_sequence = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var timer := Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.one_shot = false
+	timer.connect("timeout",Callable(self,"_on_timer_timeout"))	
+	timer.start()
 	
-
+func _on_timer_timeout():
+	GameEvents.score -= 15
+	GameEvents.update_score.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

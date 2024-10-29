@@ -1,3 +1,3 @@
 extends Node
-var score=5000
-signal update_score
+var score=99999
+signal update_score(value:int) #connect with counter + method "set_gauges"

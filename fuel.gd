@@ -13,9 +13,11 @@ func on_fuel_body_entered(other):
 	 
 	if other.is_in_group("Player"):
 		GameEvents.score+=500
+		if GameEvents.score >= 99999:
+			GameEvents.score = 99999 
 		#GameEvents.update_score.emit()
 		#GameEvents.emit_signal("get_fuel")
-		GameEvents.update_score.emit()
+		#!/bin/bashGameEvents.update_score.emit()
 		tank_fuel_sound.play()
 		var tween = get_tree().create_tween()
 		tween.parallel().tween_property(self, "scale", scale - Vector3(0.1,0.1,0.1),0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

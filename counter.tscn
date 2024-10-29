@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdc5ixrdhtw3k"]
+
+[ext_resource type="Script" path="res://counter.gd" id="1_0ousg"]
+[ext_resource type="ArrayMesh" uid="uid://s8jiyk25fxxy" path="res://3D/gauge_reversae.obj" id="2_8dhgk"]
+[ext_resource type="Material" uid="uid://dn1ms4m1a8baf" path="res://cyfry.tres" id="2_jc4k3"]
+[ext_resource type="ArrayMesh" uid="uid://bhim08gxrqn84" path="res://3D/frame.obj" id="4_w4535"]
+
+[node name="counter" type="Node3D"]
+script = ExtResource("1_0ousg")
+
+[node name="gauge_1" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_jc4k3")
+mesh = ExtResource("2_8dhgk")
+
+[node name="gauge_10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.719319)
+material_override = ExtResource("2_jc4k3")
+mesh = ExtResource("2_8dhgk")
+
+[node name="gauge_100" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.42039)
+material_override = ExtResource("2_jc4k3")
+mesh = ExtResource("2_8dhgk")
+
+[node name="gauge_1000" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.15568)
+material_override = ExtResource("2_jc4k3")
+mesh = ExtResource("2_8dhgk")
+
+[node name="gauge_10000" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.87242)
+mesh = ExtResource("2_8dhgk")
+surface_material_override/0 = ExtResource("2_jc4k3")
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_w4535")

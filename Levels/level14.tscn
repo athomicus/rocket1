@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://j27pe2eydf6g"]
+[gd_scene load_steps=24 format=3 uid="uid://j27pe2eydf6g"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_u4ebm"]
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_ajxrq"]
 [ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_hyv3h"]
 [ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_utb1s"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="5_0jypy"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="6_rsaiu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxube"]
 vertex_color_use_as_albedo = true
@@ -437,3 +438,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
 [node name="KeyboardPressButtons" parent="." instance=ExtResource("5_0jypy")]
 position = Vector2(11, 313)
+
+[node name="counter" parent="." instance=ExtResource("6_rsaiu")]
+transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)

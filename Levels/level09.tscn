@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bp16bpb4qcljs"]
+[gd_scene load_steps=20 format=3 uid="uid://bp16bpb4qcljs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_d8bb3"]
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_5pnli"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="3_upvsy"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="4_swh7r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
 albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
@@ -439,3 +440,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
 [node name="KeyboardPressButtons" parent="." instance=ExtResource("3_upvsy")]
 position = Vector2(11, 313)
+
+[node name="counter" parent="." instance=ExtResource("4_swh7r")]
+transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)

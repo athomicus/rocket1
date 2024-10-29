@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnma2xmnq17em"]
+[gd_scene load_steps=20 format=3 uid="uid://dnma2xmnq17em"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_si6od"]
 [ext_resource type="Script" path="res://LevelManager.gd" id="2_1wh2a"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="2_docku"]
 [ext_resource type="Script" path="res://SoundOnOff.gd" id="3_3ti7f"]
 [ext_resource type="PackedScene" uid="uid://djlimviagvdqs" path="res://fuel.tscn" id="5_d6man"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="6_5sx81"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -62,6 +63,9 @@ tonemap_white = 6.0
 [node name="main" type="Node3D"]
 script = ExtResource("1_si6od")
 
+[node name="counter" parent="." instance=ExtResource("6_5sx81")]
+transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
 
@@ -82,6 +86,7 @@ script = ExtResource("3_3ti7f")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = -432.0
 offset_bottom = 53.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 0.439216)
@@ -94,6 +99,7 @@ offset_bottom = 52.0
 grow_horizontal = 2
 
 [node name="LabelScore" type="Label" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

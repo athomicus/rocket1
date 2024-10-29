@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvga4l47ppk0q"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjcsr7bkp143q" path="res://3D/gauge.obj" id="1_s25ud"]
+[ext_resource type="Texture2D" uid="uid://cblnqeoryx2h6" path="res://3D/cyfry.png" id="2_01r12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2ntg"]
+albedo_texture = ExtResource("2_01r12")
+metallic_specular = 0.0
+
+[node name="gauge" type="MeshInstance3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.46859, 3.04661, 0)
+mesh = ExtResource("1_s25ud")
+skeleton = NodePath("../Fuel")
+surface_material_override/0 = SubResource("StandardMaterial3D_o2ntg")

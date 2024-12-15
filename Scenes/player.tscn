@@ -15,11 +15,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
-max_contacts_reported = 8
 contact_monitor = true
+max_contacts_reported = 8
 script = ExtResource("1_l7ovj")
-thrust = null
-ship_rot = null
 
 [node name="playerGeo" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_4ewg2")

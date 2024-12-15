@@ -1,6 +1,7 @@
 extends Node3D
 var player = preload("res://Scenes/player.tscn")
 @onready var spawner = $PlayerSpawn
+signal on_player_spawn
  
  
 

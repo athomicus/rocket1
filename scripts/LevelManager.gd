@@ -17,6 +17,7 @@ func _change_to_next_level():
 
 func _on_player_spawn():
 	var player = get_node("/root/main/PlayerSpawn/Player")   # Ok   
+	#print("player")
 	player.connect("change_to_next_level",Callable(self,"_change_to_next_level"))
 	#player.test_ref()	 
     #get_tree().call_group("guard", "enter_alert_mode")

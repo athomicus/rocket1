@@ -1,4 +1,5 @@
 extends TouchScreenButton
+#change sound on/ off
 
 var music_bas = AudioServer.get_bus_index("Master")
 @onready var  on_icon = load("res://UI/gui_icons/sound_on_white.png")

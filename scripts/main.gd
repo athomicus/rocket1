@@ -1,9 +1,8 @@
 extends Node3D
-var player = preload("res://player.tscn")
+var player = preload("res://Scenes/player.tscn")
 @onready var spawner = $PlayerSpawn
-
-signal on_player_spawn
-
+ 
+ 
 
 func _ready():
 	player_instantiate()
@@ -26,5 +25,3 @@ func player_instantiate():
 	#get_tree().current_scene.addchild(player_spawn)
 	spawner.add_child(player_spawn)
 	emit_signal("on_player_spawn")
-
-

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://djlimviagvdqs"]
 
 [ext_resource type="ArrayMesh" uid="uid://6654m02osevs" path="res://3D/kanister.obj" id="1_vpm1u"]
-[ext_resource type="Script" path="res://fuel.gd" id="2_4b2c3"]
+[ext_resource type="Script" path="res://scripts/fuel.gd" id="2_4b2c3"]
 [ext_resource type="AudioStream" uid="uid://dkq0wivymlytg" path="res://sfx/tank.ogg" id="3_smabp"]
 
 [sub_resource type="Animation" id="Animation_3ax8c"]

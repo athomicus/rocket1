@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=3 uid="uid://chupjvmivor4l"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_at35w"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="2_f3vts"]
-[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_veibo"]
-[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="3_y6m76"]
-[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="5_n8g6b"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_at35w"]
+[ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_f3vts"]
+[ext_resource type="Script" path="res://scripts/AnimatableBody3D.gd" id="3_veibo"]
+[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="3_y6m76"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="5_n8g6b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3creo"]
 vertex_color_use_as_albedo = true

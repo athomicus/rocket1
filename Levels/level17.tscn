@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=3 uid="uid://3yujrurvh8s7"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_woib4"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="2_flhv0"]
-[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_vexph"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_woib4"]
+[ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_flhv0"]
+[ext_resource type="Script" path="res://scripts/AnimatableBody3D.gd" id="3_vexph"]
 [ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_1fhn7"]
-[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="5_q4tsv"]
-[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="6_uwjby"]
+[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="5_q4tsv"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="6_uwjby"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D

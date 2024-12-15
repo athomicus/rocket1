@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://64f8puxl0tn0"]
+[gd_scene load_steps=19 format=3 uid="uid://dnma2xmnq17em"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_tw5d0"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="2_1pnj6"]
-[ext_resource type="Script" path="res://Levels/AnimatableBody3D.gd" id="3_dmqao"]
-[ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_0o0j7"]
-[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://keyboard_press_buttons.tscn" id="5_ygl65"]
-[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://counter.tscn" id="6_wbxnt"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_sxm6s"]
+[ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="2_dcl3u"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="3_2rqdr"]
+[ext_resource type="Script" path="res://scripts/LevelManager.gd" id="4_x8xo1"]
+[ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="5_uo3rx"]
+[ext_resource type="PackedScene" uid="uid://djlimviagvdqs" path="res://Scenes/fuel.tscn" id="6_nrq0d"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -14,28 +14,6 @@ script/source = "extends Node3D
 func _on_player_respawn():
 	pass
 "
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud5j4"]
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.315054, 0.0357284, 0.338273, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2xgnf"]
-size = Vector3(1.5, 1.5, 1.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o7adn"]
-size = Vector3(1.5, 1.5, 1.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_q6ke7"]
-size = Vector3(1.2, 1.2, 1.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fkyix"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
-albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dkj2v"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0bbqn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sk7p5"]
 albedo_color = Color(0.284057, 0.383832, 0.686472, 1)
@@ -51,6 +29,10 @@ albedo_color = Color(0.334023, 0.670338, 0.231729, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6oje"]
 albedo_color = Color(0.36869, 0.229219, 0.0994761, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bbqn"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_4hecv"]
 rayleigh_coefficient = 0.75
@@ -78,139 +60,23 @@ tonemap_exposure = 2.2
 tonemap_white = 6.0
 
 [node name="main" type="Node3D"]
-script = ExtResource("1_tw5d0")
+script = ExtResource("1_sxm6s")
+
+[node name="counter" parent="." instance=ExtResource("2_dcl3u")]
+transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_2rqdr")]
 
 [node name="LevelManager" type="Node3D" parent="."]
-script = ExtResource("2_1pnj6")
+script = ExtResource("4_x8xo1")
 file_path = "res://Levels/level02.tscn"
 
 [node name="Level" type="Node3D" parent="LevelManager"]
 script = SubResource("GDScript_01bhd")
 file_path = "res://Levels/level02.tscn"
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="LevelManager/Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01817, 0.284864, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, 6, 0)
-duration = 2.5
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ud5j4")
-mesh = SubResource("BoxMesh_2xgnf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D"]
-transform = Transform3D(1, -2.22045e-17, 5.68434e-14, 2.22045e-17, 1, 1.77494e-30, -5.68434e-14, -5.12758e-31, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_o7adn")
-
-[node name="AnimatableBody3D2" type="AnimatableBody3D" parent="LevelManager/Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.978629, 0.284864, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, 6, 0)
-duration = 1.5
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D2"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ud5j4")
-mesh = SubResource("BoxMesh_2xgnf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D2"]
-transform = Transform3D(1, -2.22045e-17, 5.68434e-14, 2.22045e-17, 1, 1.77494e-30, -5.68434e-14, -5.12758e-31, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_o7adn")
-
-[node name="AnimatableBody3D3" type="AnimatableBody3D" parent="LevelManager/Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32251, 5.8904, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, -5.2, 0)
-duration = 1.8
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D3"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ud5j4")
-mesh = SubResource("BoxMesh_2xgnf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D3"]
-transform = Transform3D(1, -2.22045e-17, 5.68434e-14, 2.22045e-17, 1, 1.77494e-30, -5.68434e-14, -5.12758e-31, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_o7adn")
-
-[node name="AnimatableBody3D4" type="AnimatableBody3D" parent="LevelManager/Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36737, 5.84744, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, -5, 0)
-duration = 2.0
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D4"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ud5j4")
-mesh = SubResource("BoxMesh_2xgnf")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D4"]
-transform = Transform3D(1, -2.22045e-17, 5.68434e-14, 2.22045e-17, 1, 1.77494e-30, -5.68434e-14, -5.12758e-31, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_o7adn")
-
-[node name="AnimatableBody3D_red" type="AnimatableBody3D" parent="LevelManager/Level" groups=["Floor_obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.29519, 5.80092, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, -5, 0)
-duration = 3.0
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D_red"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = ExtResource("4_0o0j7")
-mesh = SubResource("BoxMesh_q6ke7")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D_red"]
-transform = Transform3D(1.2, -2.66454e-17, 6.82121e-14, 2.66454e-17, 1.2, 2.12992e-30, -6.82121e-14, -6.1531e-31, 1.2, 0, 0, 0)
-shape = SubResource("BoxShape3D_fkyix")
-
-[node name="AnimatableBody3D_red2" type="AnimatableBody3D" parent="LevelManager/Level" groups=["Floor_obstacles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50361, 0.500643, 0)
-script = ExtResource("3_dmqao")
-destination = Vector3(0, 5.3, 0)
-duration = 3.0
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D_red2"]
-transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
-material_override = ExtResource("4_0o0j7")
-mesh = SubResource("BoxMesh_q6ke7")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/AnimatableBody3D_red2"]
-transform = Transform3D(1.2, -2.66454e-17, 6.82121e-14, 2.66454e-17, 1.2, 2.12992e-30, -6.82121e-14, -6.1531e-31, 1.2, 0, 0, 0)
-shape = SubResource("BoxShape3D_fkyix")
-
-[node name="obstacles01" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 10.2393, -1.48306e-09, 0.999936, 0.115809, -3, -3.09197e-14, -4.47576e-07, -0.71017, 7.29462, -0.427244)
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles01"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
-mesh = SubResource("BoxMesh_dkj2v")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles01/floorGeo" groups=["Floor_obstacles"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles01/floorGeo/StaticBody3D"]
-shape = SubResource("BoxShape3D_0bbqn")
-
-[node name="obstacles03" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-4.37058e-08, -0.045238, 0.999936, -4.94353e-10, 3.99974, 0.0113095, -1, -1.23679e-13, -4.37086e-08, -0.71017, 9.35638, -0.427244)
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles03"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
-mesh = SubResource("BoxMesh_dkj2v")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles03/floorGeo" groups=["Floor_obstacles"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles03/floorGeo/StaticBody3D"]
-shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="EndLanding" type="Node3D" parent="LevelManager/Level"]
 transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 6, -0.1, 0)
@@ -336,6 +202,19 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/wall_21/floorGeo/StaticBody3D"]
 shape = SubResource("BoxShape3D_0bbqn")
 
+[node name="wall_08" type="Node3D" parent="LevelManager/Level/wall_21"]
+transform = Transform3D(-0.512998, 0.162979, -0.0674434, 3.0307, 0.462059, 0.303867, 1.61374, -0.0388133, -0.913721, 0.886538, 3.80687, 0.690113)
+
+[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/wall_21/wall_08"]
+material_override = SubResource("StandardMaterial3D_w6oje")
+mesh = SubResource("BoxMesh_dkj2v")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/wall_21/wall_08/floorGeo" groups=["Floor_obstacles"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/wall_21/wall_08/floorGeo/StaticBody3D"]
+shape = SubResource("BoxShape3D_0bbqn")
+
 [node name="wall_09" type="Node3D" parent="LevelManager/Level"]
 transform = Transform3D(-3.0323, 2.53972, 2.02504, -14.2403, -0.736619, 1.01092, 3.60825, -0.7728, 5.69148, 13.2606, 0.0689573, -6.74405)
 
@@ -456,9 +335,6 @@ shape = SubResource("BoxShape3D_0bbqn")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LevelManager/Level"]
 environment = SubResource("Environment_8r4px")
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5341, 0.113944, 0)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(0.313735, 0.177957, -0.932685, 0.933928, 0.119392, 0.336934, 0.171315, -0.976769, -0.128741, 1.14218, 5.95199, 4.755)
 light_color = Color(1, 0.900522, 0.928559, 1)
@@ -483,8 +359,8 @@ directional_shadow_split_1 = 0.153
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97311, 5.5392, 10.5993)
 
-[node name="KeyboardPressButtons" parent="." instance=ExtResource("5_ygl65")]
+[node name="KeyboardPressButtons" parent="." instance=ExtResource("5_uo3rx")]
 position = Vector2(11, 313)
 
-[node name="counter" parent="." instance=ExtResource("6_wbxnt")]
-transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+[node name="Fuel" parent="." instance=ExtResource("6_nrq0d")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 3.04661, 0)

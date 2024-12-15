@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drdd7x8jbjqxy"
-path="res://.godot/imported/kanister.jpg-63283895bb284d33c814df408bd5f63c.ctex"
+path="res://.godot/imported/kanister.jpg-4e9e964e154915a564c0ae8a049839b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/kanister.jpg"
-dest_files=["res://.godot/imported/kanister.jpg-63283895bb284d33c814df408bd5f63c.ctex"]
+source_file="res://3D/kanister.jpg"
+dest_files=["res://.godot/imported/kanister.jpg-4e9e964e154915a564c0ae8a049839b9.ctex"]
 
 [params]
 

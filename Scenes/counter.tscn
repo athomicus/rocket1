@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdc5ixrdhtw3k"]
 
-[ext_resource type="Script" path="res://counter.gd" id="1_0ousg"]
+[ext_resource type="Script" path="res://scripts/counter.gd" id="1_0ousg"]
 [ext_resource type="ArrayMesh" uid="uid://s8jiyk25fxxy" path="res://3D/gauge_reversae.obj" id="2_8dhgk"]
 [ext_resource type="Material" uid="uid://dn1ms4m1a8baf" path="res://cyfry.tres" id="2_jc4k3"]
 [ext_resource type="ArrayMesh" uid="uid://bhim08gxrqn84" path="res://3D/frame.obj" id="4_w4535"]

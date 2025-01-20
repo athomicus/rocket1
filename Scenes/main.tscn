@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnma2xmnq17em"]
+[gd_scene load_steps=19 format=3 uid="uid://dnma2xmnq17em"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_sxm6s"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="2_dcl3u"]
+[ext_resource type="PackedScene" uid="uid://ddt7m48cvtgod" path="res://dissapear_text.tscn" id="2_i5bwu"]
 [ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="3_2rqdr"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="4_x8xo1"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="5_uo3rx"]
@@ -53,6 +54,8 @@ tonemap_white = 6.0
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_sxm6s")
+
+[node name="dissapearText" parent="." instance=ExtResource("2_i5bwu")]
 
 [node name="counter" parent="." instance=ExtResource("2_dcl3u")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)

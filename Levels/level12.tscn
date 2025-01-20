@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctqdfl63278yq"]
+[gd_scene load_steps=23 format=3 uid="uid://ctqdfl63278yq"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_nqve1"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_q68pb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_0t8pa"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="4_62uos"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="6_1thwi"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="7_xej6r"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -151,21 +152,6 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles04/floorGeo" groups=["Floor_obstacles"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles04/floorGeo/StaticBody3D"]
-shape = SubResource("BoxShape3D_0bbqn")
-
-[node name="obstacles05" type="Node3D" parent="LevelManager/Level"]
-transform = Transform3D(-1.31117e-07, -0.0113095, 7.99949, -1.48306e-09, 0.999936, 0.0904759, -3, -3.15858e-14, -3.49669e-07, -5.68271, 5.23379, -0.427244)
-visible = false
-
-[node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/obstacles05"]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_8hp1f")
-mesh = SubResource("BoxMesh_dkj2v")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LevelManager/Level/obstacles05/floorGeo" groups=["Floor_obstacles"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/Level/obstacles05/floorGeo/StaticBody3D"]
 shape = SubResource("BoxShape3D_0bbqn")
 
 [node name="obstacles06" type="Node3D" parent="LevelManager/Level"]
@@ -459,3 +445,7 @@ position = Vector2(11, 313)
 
 [node name="counter" parent="." instance=ExtResource("6_1thwi")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="UI" parent="." instance=ExtResource("7_xej6r")]
+offset_left = 1.0
+offset_right = 1.0

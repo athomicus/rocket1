@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5k1r2h2c0uv0"]
+[gd_scene load_steps=21 format=3 uid="uid://c5k1r2h2c0uv0"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_k1q2d"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_f4f8h"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="3_f3gfn"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="4_qi26q"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="5_smur8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hp1f"]
 albedo_color = Color(0.553373, 0.0985599, 0.0436372, 1)
@@ -372,3 +373,5 @@ position = Vector2(11, 313)
 
 [node name="counter" parent="." instance=ExtResource("4_qi26q")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="UI" parent="." instance=ExtResource("5_smur8")]

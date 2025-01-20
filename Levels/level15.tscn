@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bidtt4vw8rsr"]
+[gd_scene load_steps=26 format=3 uid="uid://bidtt4vw8rsr"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xpkmn"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_xnqoq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_12gnr"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="5_g2dpn"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="6_nvaxh"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="7_fm08d"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -91,7 +92,7 @@ file_path = "res://Levels/level02.tscn"
 transform = Transform3D(0.999312, 0.0370972, 0, -0.0370972, 0.999312, 0, 0, 0, 1, 2.20125, 0.5, 0)
 script = ExtResource("3_b25jt")
 destination = Vector3(0, 5, 0)
-duration = 3.0
+duration = 2.5
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D"]
 transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
@@ -107,7 +108,7 @@ shape = SubResource("BoxShape3D_0rk5i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79673, 5.35912, 0)
 script = ExtResource("3_b25jt")
 destination = Vector3(0, -4.7, 0)
-duration = 3.0
+duration = 2.5
 
 [node name="floorGeo" type="MeshInstance3D" parent="LevelManager/Level/AnimatableBody3D_red"]
 transform = Transform3D(1, 2.77556e-17, 5.77316e-15, -1.11022e-17, 1, 6.47059e-25, -8.52651e-14, -3.15544e-30, 1, 0, 0, 0)
@@ -451,3 +452,5 @@ position = Vector2(11, 313)
 
 [node name="counter" parent="." instance=ExtResource("6_nvaxh")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="UI" parent="." instance=ExtResource("7_fm08d")]

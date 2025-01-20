@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddt7m48cvtgod"]
+
+[ext_resource type="FontFile" uid="uid://ba0yhcrrubh0t" path="res://fonts/Moonhouse-yE5M.ttf" id="1_a6vc6"]
+[ext_resource type="Script" path="res://Scenes/dissapear_text.gd" id="2_tibyv"]
+
+[node name="dissapearText" type="Label"]
+offset_left = 116.24
+offset_top = 189.0
+offset_right = 594.24
+offset_bottom = 235.345
+theme_override_colors/font_color = Color(0.615576, 0.333303, 0.0324953, 1)
+theme_override_colors/font_shadow_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+theme_override_fonts/font = ExtResource("1_a6vc6")
+theme_override_font_sizes/font_size = 33
+text = "DO NOT TOUCH ROCKS"
+script = ExtResource("2_tibyv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

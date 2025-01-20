@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://chupjvmivor4l"]
+[gd_scene load_steps=23 format=3 uid="uid://chupjvmivor4l"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_at35w"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_f3vts"]
 [ext_resource type="Script" path="res://scripts/AnimatableBody3D.gd" id="3_veibo"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="3_y6m76"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="5_n8g6b"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="6_rpnsl"]
+[ext_resource type="PackedScene" uid="uid://ddt7m48cvtgod" path="res://dissapear_text.tscn" id="7_emdox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3creo"]
 vertex_color_use_as_albedo = true
@@ -422,3 +424,13 @@ position = Vector2(11, 313)
 
 [node name="counter" parent="." instance=ExtResource("5_n8g6b")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="UI" parent="." instance=ExtResource("6_rpnsl")]
+
+[node name="dissapearText" parent="." instance=ExtResource("7_emdox")]
+offset_left = 178.0
+offset_top = 156.0
+offset_right = 692.0
+offset_bottom = 202.345
+theme_override_colors/font_color = Color(0.549252, 0.00264681, 0.826659, 1)
+text = "PURPLE DON'T DESTROY"

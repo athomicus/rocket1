@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyay4p73m0g8g"]
+[gd_scene load_steps=23 format=3 uid="uid://dyay4p73m0g8g"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_npbry"]
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="2_83lhy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://kxadti5ntw8q" path="res://red.tres" id="4_wsa0t"]
 [ext_resource type="PackedScene" uid="uid://bkn4tko8mmtjd" path="res://Scenes/keyboard_press_buttons.tscn" id="5_d7l1d"]
 [ext_resource type="PackedScene" uid="uid://bdc5ixrdhtw3k" path="res://Scenes/counter.tscn" id="6_y3lry"]
+[ext_resource type="PackedScene" uid="uid://rwdkeaylvs33" path="res://Scenes/ui.tscn" id="7_ebxxi"]
 
 [sub_resource type="GDScript" id="GDScript_01bhd"]
 script/source = "extends Node3D
@@ -442,3 +443,5 @@ position = Vector2(11, 313)
 
 [node name="counter" parent="." instance=ExtResource("6_y3lry")]
 transform = Transform3D(-0.199368, 0, -0.979925, 0, 1, 0, 0.979925, 0, -0.199368, 11.355, 4.337, -2.204)
+
+[node name="UI" parent="." instance=ExtResource("7_ebxxi")]
